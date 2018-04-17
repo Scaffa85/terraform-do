@@ -28,7 +28,7 @@ resource "digitalocean_droplet" "haproxy-www" {
       "sudo apt-get -y install haproxy",
 
       # download haproxy conf
-      "sudo wget https://gist.githubusercontent.com/thisismitch/91815a582c27bd8aa44d/raw/8fc59b7cb88a2be9b802cd76288ca1c2ea957dd9/haproxy.cfg -O /etc/haproxy/haproxy.cfg",
+      "sudo wget https://raw.githubusercontent.com/Scaffa85/terraform-do/master/files/haproxy.cfg -O /etc/haproxy/haproxy.cfg",
 
       # replace ip address variables in haproxy conf to use droplet ip addresses
       "sudo sed -i 's/HAPROXY_PUBLIC_IP/${digitalocean_droplet.haproxy-www.ipv4_address}/g' /etc/haproxy/haproxy.cfg",
